@@ -741,6 +741,7 @@ public class PlayHangman extends javax.swing.JFrame {
     public void penalty(){
         points -= 10;
         ++anatomy;
+        repaint();
 
         if(points <= 0 || anatomy >= 6)
             System.exit(0);
@@ -797,37 +798,53 @@ public class PlayHangman extends javax.swing.JFrame {
         g2.draw(lin3);
         g2.draw(lin4);
 
-        Thread painter = new Thread(){
-            public void run(){
-                try{
-                    while(true){
-                        switch(anatomy){
-                            case 1: g2.drawOval(380, 125, 40, 40);
-                                    break;
-                            case 2: Line2D torso = new Line2D.Float(400, 165, 400, 220);
-                                    g2.draw(torso);
-                                    break;
-                            case 3: Line2D rightArm = new Line2D.Float(400, 170, 420, 190);
-                                    g2.draw(rightArm);
-                                    break;
-                            case 4: Line2D leftArm = new Line2D.Float(400, 170, 380, 190);
-                                    g2.draw(leftArm);
-                                    break;
-                            case 5: Line2D rightLeg = new Line2D.Float(400, 220, 420, 240);
-                                    g2.draw(rightLeg);
-                                    break;
-                            case 6: Line2D leftLeg = new Line2D.Float(400, 220, 380, 240);
-                                    g2.draw(leftLeg);
-                                    break;
-                            default: break;
-                        }
-                    }
-                }catch(Exception e){
-                    e.printStackTrace();
-                }
-            }
-        };
-        painter.start();
+        Line2D torso = new Line2D.Float(400, 165, 400, 220);
+        Line2D rightArm = new Line2D.Float(400, 170, 420, 190);
+        Line2D leftArm = new Line2D.Float(400, 170, 380, 190);
+        Line2D rightLeg = new Line2D.Float(400, 220, 420, 240);
+        Line2D leftLeg = new Line2D.Float(400, 220, 380, 240);
+        
+        switch(anatomy){
+            case 1: g2.drawOval(380, 125, 40, 40);
+                System.out.println("Case 1");
+                break;
+            case 2:
+                g2.drawOval(380, 125, 40, 40);
+                g2.draw(torso);
+                System.out.println("Case 2");
+                break;
+            case 3:
+                g2.drawOval(380, 125, 40, 40);
+                g2.draw(torso);
+                g2.draw(rightArm);
+                System.out.println("Case 3");
+                break;
+            case 4:
+                g2.drawOval(380, 125, 40, 40);
+                g2.draw(torso);
+                g2.draw(rightArm);
+                g2.draw(leftArm);
+                System.out.println("Case 4");
+                break;
+            case 5:
+                g2.drawOval(380, 125, 40, 40);
+                g2.draw(torso);
+                g2.draw(rightArm);
+                g2.draw(leftArm);
+                g2.draw(rightLeg);
+                System.out.println("Case 5");
+                break;
+            case 6:
+                g2.drawOval(380, 125, 40, 40);
+                g2.draw(torso);
+                g2.draw(rightArm);
+                g2.draw(leftArm);
+                g2.draw(rightLeg);
+                g2.draw(leftLeg);
+                System.out.println("Case 6");
+                break;
+            default: break;                        
+        }
     }
 
     public static boolean containsLetter(char letter){
