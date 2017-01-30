@@ -35,11 +35,12 @@ public class MainScreen extends javax.swing.JFrame {
         playButton = new javax.swing.JButton();
         highScoresButton = new javax.swing.JButton();
         creditsButton = new javax.swing.JButton();
+        playButton2 = new javax.swing.JButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
         jPanel1.setBackground(new java.awt.Color(0, 0, 0));
-        jPanel1.setPreferredSize(new java.awt.Dimension(680, 600));
+        jPanel1.setPreferredSize(new java.awt.Dimension(600, 400));
 
         playButton.setBackground(new java.awt.Color(0, 0, 0));
         playButton.setText("Play");
@@ -65,6 +66,14 @@ public class MainScreen extends javax.swing.JFrame {
             }
         });
 
+        playButton2.setBackground(new java.awt.Color(0, 0, 0));
+        playButton2.setText("Play2");
+        playButton2.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                playButton2ActionPerformed(evt);
+            }
+        });
+
         javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
         jPanel1.setLayout(jPanel1Layout);
         jPanel1Layout.setHorizontalGroup(
@@ -72,51 +81,64 @@ public class MainScreen extends javax.swing.JFrame {
             .addGroup(jPanel1Layout.createSequentialGroup()
                 .addContainerGap(456, Short.MAX_VALUE)
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                    .addComponent(creditsButton, javax.swing.GroupLayout.DEFAULT_SIZE, 133, Short.MAX_VALUE)
-                    .addComponent(highScoresButton, javax.swing.GroupLayout.DEFAULT_SIZE, 133, Short.MAX_VALUE)
-                    .addComponent(playButton, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
-                .addContainerGap(11, Short.MAX_VALUE))
+                    .addComponent(playButton, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, 133, Short.MAX_VALUE)
+                    .addComponent(highScoresButton, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, 133, Short.MAX_VALUE)
+                    .addComponent(creditsButton, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, 133, Short.MAX_VALUE)
+                    .addComponent(playButton2, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                .addContainerGap())
         );
         jPanel1Layout.setVerticalGroup(
             jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel1Layout.createSequentialGroup()
-                .addContainerGap(247, Short.MAX_VALUE)
+                .addContainerGap(198, Short.MAX_VALUE)
                 .addComponent(playButton, javax.swing.GroupLayout.PREFERRED_SIZE, 44, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(playButton2, javax.swing.GroupLayout.PREFERRED_SIZE, 44, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(highScoresButton, javax.swing.GroupLayout.PREFERRED_SIZE, 44, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(creditsButton, javax.swing.GroupLayout.PREFERRED_SIZE, 44, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(9, 9, 9))
+                .addContainerGap())
         );
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(jPanel1, javax.swing.GroupLayout.DEFAULT_SIZE, 600, Short.MAX_VALUE)
+            .addComponent(jPanel1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(jPanel1, javax.swing.GroupLayout.DEFAULT_SIZE, 400, Short.MAX_VALUE)
+            .addComponent(jPanel1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
         );
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
     private void playButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_playButtonActionPerformed
-        PlayHangman game = new PlayHangman();
+        HangmanGame game = new HangmanGame();
         game.setVisible(true);
+        this.setVisible(false);
     }//GEN-LAST:event_playButtonActionPerformed
 
     private void highScoresButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_highScoresButtonActionPerformed
         HighScoresScreen hs = new HighScoresScreen();
         hs.setVisible(true);
+        this.setVisible(false);
     }//GEN-LAST:event_highScoresButtonActionPerformed
 
     private void creditsButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_creditsButtonActionPerformed
         CreditsScreen cs = new CreditsScreen();
         cs.setVisible(true);
+        this.setVisible(false);
     }//GEN-LAST:event_creditsButtonActionPerformed
+
+    private void playButton2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_playButton2ActionPerformed
+        ColorGame colorGame = new ColorGame();
+        colorGame.setVisible(true);
+        colorGame.addMouseListener(colorGame);
+        this.setVisible(false);
+    }//GEN-LAST:event_playButton2ActionPerformed
 
     /**
      * @param args the command line arguments
@@ -158,5 +180,6 @@ public class MainScreen extends javax.swing.JFrame {
     private javax.swing.JButton highScoresButton;
     private javax.swing.JPanel jPanel1;
     private javax.swing.JButton playButton;
+    private javax.swing.JButton playButton2;
     // End of variables declaration//GEN-END:variables
 }

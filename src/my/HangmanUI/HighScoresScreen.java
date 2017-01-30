@@ -51,6 +51,7 @@ public class HighScoresScreen extends javax.swing.JFrame {
 
         jPanel1.setBackground(new java.awt.Color(0, 0, 0));
         jPanel1.setForeground(new java.awt.Color(0, 0, 0));
+        jPanel1.setPreferredSize(new java.awt.Dimension(600, 400));
 
         highScores.setFont(new java.awt.Font("Lucida Grande", 0, 24)); // NOI18N
         highScores.setForeground(new java.awt.Color(255, 0, 51));
@@ -170,7 +171,7 @@ public class HighScoresScreen extends javax.swing.JFrame {
                     .addComponent(highScore5)
                     .addComponent(separator5)
                     .addComponent(highScoreValue5))
-                .addContainerGap(85, Short.MAX_VALUE))
+                .addContainerGap(76, Short.MAX_VALUE))
         );
 
         back.setBackground(new java.awt.Color(0, 0, 0));
@@ -188,7 +189,7 @@ public class HighScoresScreen extends javax.swing.JFrame {
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel1Layout.createSequentialGroup()
                 .addContainerGap()
                 .addComponent(back)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 165, Short.MAX_VALUE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 166, Short.MAX_VALUE)
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
                     .addComponent(jPanel2, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                     .addComponent(highScores, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
@@ -213,11 +214,11 @@ public class HighScoresScreen extends javax.swing.JFrame {
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(jPanel1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+            .addComponent(jPanel1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(jPanel1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+            .addComponent(jPanel1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
         );
 
         pack();
@@ -226,6 +227,7 @@ public class HighScoresScreen extends javax.swing.JFrame {
     private void backActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_backActionPerformed
         MainScreen ms = new MainScreen();
         ms.setVisible(true);
+        this.setVisible(false);
     }//GEN-LAST:event_backActionPerformed
 
     /**
