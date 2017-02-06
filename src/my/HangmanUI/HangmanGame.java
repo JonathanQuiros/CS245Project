@@ -389,7 +389,6 @@ public class HangmanGame extends javax.swing.JFrame {
                         int day = calendar.get(Calendar.DAY_OF_MONTH);
 
                         int month = calendar.get(Calendar.MONTH);
-                        if(month == 0)
                         ++month;
 
                         int year = calendar.get(Calendar.YEAR);

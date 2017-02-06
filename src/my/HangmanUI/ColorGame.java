@@ -82,7 +82,6 @@ public class ColorGame extends javax.swing.JFrame implements MouseListener{
                         int day = calendar.get(Calendar.DAY_OF_MONTH);
 
                         int month = calendar.get(Calendar.MONTH);
-                        if(month == 0)
                         ++month;
 
                         int year = calendar.get(Calendar.YEAR);
@@ -378,7 +377,11 @@ public class ColorGame extends javax.swing.JFrame implements MouseListener{
     
     @Override
     public void mouseEntered(MouseEvent e){
-        
+        for(int i = 0; i < ellipses.length; ++i){
+            if (ellipses[i].contains(e.getX(), e.getY()) ){
+                System.out.println("Highlighted");
+            }
+        }
     }
     
     @Override
