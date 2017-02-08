@@ -5,6 +5,13 @@
  */
 package my.HangmanUI;
 
+import java.awt.Component;
+import java.awt.event.ActionEvent;
+import javax.swing.AbstractAction;
+import javax.swing.Action;
+import javax.swing.JOptionPane;
+import javax.swing.KeyStroke;
+
 /**
  *
  * @author Bad and Boujee
@@ -16,6 +23,7 @@ public class CreditsScreen extends javax.swing.JFrame {
      */
     public CreditsScreen() {
         initComponents();
+        keyBinds();
     }
 
     /**
@@ -214,6 +222,19 @@ public class CreditsScreen extends javax.swing.JFrame {
                 new CreditsScreen().setVisible(true);
             }
         });
+    }
+    
+    private void keyBinds() {
+        
+        jPanel1.getInputMap().put(KeyStroke.getKeyStroke("ESCAPE"), "quit");
+        Action quit = new AbstractAction(){
+
+            @Override
+            public void actionPerformed(ActionEvent arg0) {
+                System.exit(0);
+            } 
+        };
+        jPanel1.getActionMap().put("quit", quit);
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables

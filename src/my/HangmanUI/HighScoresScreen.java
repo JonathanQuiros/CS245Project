@@ -5,6 +5,13 @@
  */
 package my.HangmanUI;
 
+import java.awt.Component;
+import java.awt.event.ActionEvent;
+import javax.swing.AbstractAction;
+import javax.swing.Action;
+import javax.swing.JOptionPane;
+import javax.swing.KeyStroke;
+
 /**
  *
  * @author Bad and Boujee
@@ -16,6 +23,7 @@ public class HighScoresScreen extends javax.swing.JFrame {
      */
     public HighScoresScreen() {
         initComponents();
+        keyBinds();
     }
 
     /**
@@ -263,6 +271,32 @@ public class HighScoresScreen extends javax.swing.JFrame {
                 new HighScoresScreen().setVisible(true);
             }
         });
+    }
+    
+    private void keyBinds() {
+        
+        jPanel1.getInputMap().put(KeyStroke.getKeyStroke("F1"), "credits");
+        Action credits = new AbstractAction(){
+
+            @Override
+            public void actionPerformed(ActionEvent arg0) {
+                Component frame = null;
+                JOptionPane.showMessageDialog(frame, "Jonathan Quiros, 010233288\nMarco Roman, 009743318\nDavid Emmanuel, 000000000\nEric Rensel, 000000000",
+                        "Credits", 
+                        JOptionPane.PLAIN_MESSAGE);
+            }
+        };
+        jPanel1.getActionMap().put("credits", credits);
+        
+        jPanel1.getInputMap().put(KeyStroke.getKeyStroke("ESCAPE"), "quit");
+        Action quit = new AbstractAction(){
+
+            @Override
+            public void actionPerformed(ActionEvent arg0) {
+                System.exit(0);
+            } 
+        };
+        jPanel1.getActionMap().put("quit", quit);
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables

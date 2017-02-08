@@ -8,7 +8,7 @@ import javax.swing.*;
 import javax.swing.event.*;
 import my.HangmanUI.*;
 
-public class Hangman extends JFrame implements KeyListener{
+public class Hangman extends JFrame{
 
     /**
      * @param args the command line arguments
@@ -25,7 +25,6 @@ public class Hangman extends JFrame implements KeyListener{
             public void actionPerformed(ActionEvent evt) {
                 intro.setVisible(false);
                 mainScreen.setVisible(true);
-                mainScreen.addKeyListener(new MainScreen());
             }
         };
               
@@ -35,23 +34,4 @@ public class Hangman extends JFrame implements KeyListener{
         
         Thread.sleep(5000);
     }
-
-    @Override
-    public void keyTyped(KeyEvent e) {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
-    }
-
-    @Override
-    public void keyPressed(KeyEvent e) {
-        int keyCode = e.getKeyCode();
-        
-        if(keyCode == KeyEvent.VK_ESCAPE)
-            System.exit(0);
-    }
-
-    @Override
-    public void keyReleased(KeyEvent e) {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
-    }
 }
-    

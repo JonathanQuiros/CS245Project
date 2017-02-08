@@ -6,10 +6,16 @@
 package my.HangmanUI;
 
 import java.awt.Color;
+import java.awt.Component;
 import java.awt.Graphics;
+import java.awt.event.ActionEvent;
 import java.util.Calendar;
 import java.util.GregorianCalendar;
+import javax.swing.AbstractAction;
+import javax.swing.Action;
 import javax.swing.JFormattedTextField;
+import javax.swing.JOptionPane;
+import javax.swing.KeyStroke;
 
 /**
  *
@@ -45,6 +51,7 @@ public class SudokuGame extends javax.swing.JFrame {
      */
     public SudokuGame() {
         initComponents();
+        keyBinds(this);
     }
 
     /**
@@ -1855,6 +1862,32 @@ public class SudokuGame extends javax.swing.JFrame {
             g.drawLine(127, y, 469, y);
         }
 
+    }
+    
+    private void keyBinds(SudokuGame sg) {
+        
+        sg.rootPane.getInputMap().put(KeyStroke.getKeyStroke("F1"), "credits");
+        Action credits = new AbstractAction(){
+
+            @Override
+            public void actionPerformed(ActionEvent arg0) {
+                Component frame = null;
+                JOptionPane.showMessageDialog(frame, "Jonathan Quiros, 010233288\nMarco Roman, 009743318\nDavid Emmanuel, 000000000\nEric Rensel, 000000000",
+                        "Credits", 
+                        JOptionPane.PLAIN_MESSAGE);
+            }
+        };
+        sg.rootPane.getActionMap().put("credits", credits);
+        
+        sg.rootPane.getInputMap().put(KeyStroke.getKeyStroke("ESCAPE"), "quit");
+        Action quit = new AbstractAction(){
+
+            @Override
+            public void actionPerformed(ActionEvent arg0) {
+                System.exit(0);
+            } 
+        };
+        sg.rootPane.getActionMap().put("quit", quit);
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables

@@ -5,9 +5,7 @@
  */
 package my.HangmanUI;
 
-import java.awt.event.ActionEvent;
-import java.awt.event.ActionListener;
-import javax.swing.Timer;
+import java.awt.Component;
 import java.awt.event.*;
 import javax.swing.JComponent;
 import javax.swing.ActionMap;
@@ -15,20 +13,27 @@ import javax.swing.InputMap;
 import java.awt.event.ActionEvent;
 import java.awt.event.InputEvent;
 import java.awt.event.KeyEvent;
+import javax.swing.AbstractAction;
+import javax.swing.Action;
+import javax.swing.JButton;
+import javax.swing.JDialog;
+import javax.swing.JOptionPane;
+import javax.swing.JRootPane;
+import javax.swing.KeyStroke;
 
 /**
  *
  * @author Bad and Boujee
  */
-public class MainScreen extends javax.swing.JFrame implements KeyListener{
-
+public class MainScreen extends javax.swing.JFrame{
     /**
      * Creates new form MainScreen
      */
     public MainScreen() {
         initComponents();
+        keyBinds();
     }
-
+    
     /**
      * This method is called from within the constructor to initialize the form.
      * WARNING: Do NOT modify this code. The content of this method is always
@@ -171,25 +176,30 @@ public class MainScreen extends javax.swing.JFrame implements KeyListener{
     private javax.swing.JPanel jPanel1;
     private javax.swing.JButton playButton;
     // End of variables declaration//GEN-END:variables
-
-    @Override
-    public void keyTyped(KeyEvent e) {
-        throw new UnsupportedOperationException("Not supported yet.");
-    }
-
-    @Override
-    public void keyPressed(KeyEvent e) {
-        int keyCode = e.getKeyCode();
+       
+    private void keyBinds() {
         
-        System.out.println("Entered MainScreen");
-        
-        if(keyCode == e.VK_ESCAPE){
-            System.exit(0);
-        }
-    }
+        jPanel1.getInputMap().put(KeyStroke.getKeyStroke("F1"), "credits");
+        Action credits = new AbstractAction(){
 
-    @Override
-    public void keyReleased(KeyEvent e) {
-        throw new UnsupportedOperationException("Not supported yet.");
+            @Override
+            public void actionPerformed(ActionEvent arg0) {
+                Component frame = null;
+                JOptionPane.showMessageDialog(frame, "Jonathan Quiros, 010233288\nMarco Roman, 009743318\nDavid Emmanuel, 000000000\nEric Rensel, 000000000",
+                        "Credits", 
+                        JOptionPane.PLAIN_MESSAGE);
+            }
+        };
+        jPanel1.getActionMap().put("credits", credits);
+        
+        jPanel1.getInputMap().put(KeyStroke.getKeyStroke("ESCAPE"), "quit");
+        Action quit = new AbstractAction(){
+
+            @Override
+            public void actionPerformed(ActionEvent arg0) {
+                System.exit(0);
+            } 
+        };
+        jPanel1.getActionMap().put("quit", quit);
     }
 }
