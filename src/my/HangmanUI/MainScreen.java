@@ -8,12 +8,19 @@ package my.HangmanUI;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import javax.swing.Timer;
+import java.awt.event.*;
+import javax.swing.JComponent;
+import javax.swing.ActionMap;
+import javax.swing.InputMap;
+import java.awt.event.ActionEvent;
+import java.awt.event.InputEvent;
+import java.awt.event.KeyEvent;
 
 /**
  *
  * @author Bad and Boujee
  */
-public class MainScreen extends javax.swing.JFrame {
+public class MainScreen extends javax.swing.JFrame implements KeyListener{
 
     /**
      * Creates new form MainScreen
@@ -35,16 +42,16 @@ public class MainScreen extends javax.swing.JFrame {
         playButton = new javax.swing.JButton();
         highScoresButton = new javax.swing.JButton();
         creditsButton = new javax.swing.JButton();
-        playButton2 = new javax.swing.JButton();
-        playButton3 = new javax.swing.JButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
         jPanel1.setBackground(new java.awt.Color(0, 0, 0));
+        jPanel1.setMaximumSize(new java.awt.Dimension(600, 400));
+        jPanel1.setMinimumSize(new java.awt.Dimension(600, 400));
         jPanel1.setPreferredSize(new java.awt.Dimension(600, 400));
 
         playButton.setBackground(new java.awt.Color(0, 0, 0));
-        playButton.setText("Hangman");
+        playButton.setText("Play");
         playButton.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 playButtonActionPerformed(evt);
@@ -67,22 +74,6 @@ public class MainScreen extends javax.swing.JFrame {
             }
         });
 
-        playButton2.setBackground(new java.awt.Color(0, 0, 0));
-        playButton2.setText("Color Game");
-        playButton2.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                playButton2ActionPerformed(evt);
-            }
-        });
-
-        playButton3.setBackground(new java.awt.Color(0, 0, 0));
-        playButton3.setText("Sudoku");
-        playButton3.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                playButton3ActionPerformed(evt);
-            }
-        });
-
         javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
         jPanel1.setLayout(jPanel1Layout);
         jPanel1Layout.setHorizontalGroup(
@@ -90,23 +81,16 @@ public class MainScreen extends javax.swing.JFrame {
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel1Layout.createSequentialGroup()
                 .addContainerGap(456, Short.MAX_VALUE)
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                    .addComponent(playButton3, javax.swing.GroupLayout.DEFAULT_SIZE, 133, Short.MAX_VALUE)
-                    .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                        .addComponent(playButton, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, 133, Short.MAX_VALUE)
-                        .addComponent(highScoresButton, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, 133, Short.MAX_VALUE)
-                        .addComponent(creditsButton, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, 133, Short.MAX_VALUE)
-                        .addComponent(playButton2, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)))
+                    .addComponent(playButton, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, 133, Short.MAX_VALUE)
+                    .addComponent(highScoresButton, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, 133, Short.MAX_VALUE)
+                    .addComponent(creditsButton, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, 133, Short.MAX_VALUE))
                 .addContainerGap())
         );
         jPanel1Layout.setVerticalGroup(
             jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel1Layout.createSequentialGroup()
-                .addContainerGap(149, Short.MAX_VALUE)
+                .addContainerGap(247, Short.MAX_VALUE)
                 .addComponent(playButton, javax.swing.GroupLayout.PREFERRED_SIZE, 44, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(playButton2, javax.swing.GroupLayout.PREFERRED_SIZE, 44, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(playButton3, javax.swing.GroupLayout.PREFERRED_SIZE, 44, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(highScoresButton, javax.swing.GroupLayout.PREFERRED_SIZE, 44, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
@@ -145,19 +129,6 @@ public class MainScreen extends javax.swing.JFrame {
         cs.setVisible(true);
         this.setVisible(false);
     }//GEN-LAST:event_creditsButtonActionPerformed
-
-    private void playButton2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_playButton2ActionPerformed
-        ColorGame colorGame = new ColorGame();
-        colorGame.setVisible(true);
-        colorGame.addMouseListener(colorGame);
-        this.setVisible(false);
-    }//GEN-LAST:event_playButton2ActionPerformed
-
-    private void playButton3ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_playButton3ActionPerformed
-        SudokuGame sudoku = new SudokuGame();
-        sudoku.setVisible(true);
-        this.setVisible(false);
-    }//GEN-LAST:event_playButton3ActionPerformed
 
     /**
      * @param args the command line arguments
@@ -199,7 +170,26 @@ public class MainScreen extends javax.swing.JFrame {
     private javax.swing.JButton highScoresButton;
     private javax.swing.JPanel jPanel1;
     private javax.swing.JButton playButton;
-    private javax.swing.JButton playButton2;
-    private javax.swing.JButton playButton3;
     // End of variables declaration//GEN-END:variables
+
+    @Override
+    public void keyTyped(KeyEvent e) {
+        throw new UnsupportedOperationException("Not supported yet.");
+    }
+
+    @Override
+    public void keyPressed(KeyEvent e) {
+        int keyCode = e.getKeyCode();
+        
+        System.out.println("Entered MainScreen");
+        
+        if(keyCode == e.VK_ESCAPE){
+            System.exit(0);
+        }
+    }
+
+    @Override
+    public void keyReleased(KeyEvent e) {
+        throw new UnsupportedOperationException("Not supported yet.");
+    }
 }

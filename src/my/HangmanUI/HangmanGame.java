@@ -1,5 +1,5 @@
 /***************************************************************
-* file: PlayHangman.java
+* file: HangmanGame.java
 * author: Marco Roman
 * class: CS 245 – GUI Development
 *
@@ -20,9 +20,12 @@ import java.util.Calendar;
 import java.util.GregorianCalendar;
 import java.util.Random;
 import static java.lang.Thread.sleep;
+import javax.swing.JComponent;
 
 //This class houses the entire game and handles the creation of the interface
 public class HangmanGame extends javax.swing.JFrame {
+    
+    
     static StringBuilder words[] = {new StringBuilder("abstract"), 
                                     new StringBuilder("cemetery"),
                                     new StringBuilder("nurse"),
@@ -817,8 +820,11 @@ public class HangmanGame extends javax.swing.JFrame {
 
     //This method exits the game and transitions to the score page
     private void skipButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_skipButtonActionPerformed
-        MainScreen ms = new MainScreen();
-        ms.setVisible(true);
+        //MainScreen ms = new MainScreen();
+        //ms.setVisible(true);
+        ColorGame colorGame = new ColorGame();
+        colorGame.setVisible(true);
+        colorGame.addMouseListener(colorGame);
         this.setVisible(false);
     }//GEN-LAST:event_skipButtonActionPerformed
 
@@ -867,8 +873,11 @@ public class HangmanGame extends javax.swing.JFrame {
         ++anatomy;
         
         if(points <= 0 || anatomy >= 6){
-            HighScoresScreen hs = new HighScoresScreen();
-            hs.setVisible(true);
+            //HighScoresScreen hs = new HighScoresScreen();
+            //hs.setVisible(true);
+            ColorGame colorGame = new ColorGame();
+            colorGame.setVisible(true);
+            colorGame.addMouseListener(colorGame);
             this.setVisible(false);
         }       
         
@@ -972,8 +981,11 @@ public class HangmanGame extends javax.swing.JFrame {
     //Method: winner
     //Transitions out of the game and to the appropriate screen in the event of a win
     public void winner(){     
-        HighScoresScreen hs = new HighScoresScreen();
-        hs.setVisible(true);
+        //HighScoresScreen hs = new HighScoresScreen();
+        //hs.setVisible(true);
+        ColorGame colorGame = new ColorGame();
+        colorGame.setVisible(true);
+        colorGame.addMouseListener(colorGame);
         this.setVisible(false);
     }
 

@@ -198,7 +198,7 @@ public class SudokuGame extends javax.swing.JFrame {
             }
         });
 
-        SLabel.setFont(new java.awt.Font("Rockwell Extra Bold", 0, 24)); // NOI18N
+        SLabel.setFont(new java.awt.Font("Rockwell Extra Bold", 0, 20)); // NOI18N
         SLabel.setText("SUDOKU");
 
         R2C6_IMMUTABLE.setEditable(false);
@@ -963,9 +963,12 @@ public class SudokuGame extends javax.swing.JFrame {
             .addGroup(layout.createSequentialGroup()
                 .addContainerGap()
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(SLabel)
-                    .addComponent(submitButton))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                    .addGroup(layout.createSequentialGroup()
+                        .addComponent(submitButton)
+                        .addGap(0, 46, Short.MAX_VALUE))
+                    .addGroup(layout.createSequentialGroup()
+                        .addComponent(SLabel)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 24, Short.MAX_VALUE)))
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addComponent(timeDisplay, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
@@ -1139,7 +1142,7 @@ public class SudokuGame extends javax.swing.JFrame {
                             .addGroup(layout.createSequentialGroup()
                                 .addComponent(errorLabel)
                                 .addGap(76, 76, 76)))
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 56, Short.MAX_VALUE)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 63, Short.MAX_VALUE)
                         .addComponent(skipButton)))
                 .addContainerGap())
         );
@@ -1256,7 +1259,7 @@ public class SudokuGame extends javax.swing.JFrame {
                             .addComponent(SLabel))
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                         .addComponent(skipButton)))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                 .addComponent(errorLabel)
                 .addGap(9, 9, 9))
         );
@@ -1266,6 +1269,8 @@ public class SudokuGame extends javax.swing.JFrame {
     }// </editor-fold>//GEN-END:initComponents
 
     private void skipButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_skipButtonActionPerformed
+        //MainScreen ms = new MainScreen();
+        //ms.setVisible(true);
         HighScoresScreen hs = new HighScoresScreen();
         hs.setVisible(true);
         this.setVisible(false);
@@ -1752,9 +1757,30 @@ public class SudokuGame extends javax.swing.JFrame {
     private void submitButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_submitButtonActionPerformed
         if(correct()){
             System.out.println("Correct solution.");
-        }else
+        }else{
             System.out.println("Incorrect solution.");
+        }
+        
+        if(complete()){
+            HighScoresScreen hs = new HighScoresScreen();
+            hs.setVisible(true);
+            this.setVisible(false);
+        }
     }//GEN-LAST:event_submitButtonActionPerformed
+    
+    public boolean complete(){
+        boolean c = true;
+        
+        for(int i = 0; i < input.length; ++i){
+            for(int j = 0; j < input.length; ++j){
+                if(input[i][j] == 0){
+                    c = false;
+                }
+            }
+        }
+        
+        return c;
+    }
     
     public boolean correct(){
         boolean c = true;
@@ -1818,15 +1844,15 @@ public class SudokuGame extends javax.swing.JFrame {
             y1 = 48;
             y2 = 390;
         }else{
-            y1 = 28;
-            y2 = 370;
+            y1 = 34;
+            y2 = 376;
         }
         
-        for(int i = 0, x = 125; i < 4; ++i, x += 114){
+        for(int i = 0, x = 127; i < 4; ++i, x += 114){
             g.drawLine(x, y1, x, y2);
         }
         for (int i = 0, y = y1; i < 4; ++i, y += 114) {
-            g.drawLine(125, y, 467, y);
+            g.drawLine(127, y, 469, y);
         }
 
     }

@@ -1,5 +1,5 @@
 /***************************************************************
-* file: PlayHangman.java
+* file: ColorGame.java
 * author: Bad and Boujee
 * class: CS 245 – GUI Development
 *
@@ -337,9 +337,11 @@ public class ColorGame extends javax.swing.JFrame implements MouseListener{
                 }
             
                 if(gameTracker >= 5){
-                    HighScoresScreen hs = new HighScoresScreen();
+                    //HighScoresScreen hs = new HighScoresScreen();
+                    SudokuGame sudoku = new SudokuGame();
                     this.setVisible(false);
-                    hs.setVisible(true);
+                    //hs.setVisible(true);
+                    sudoku.setVisible(true);
                 }
                 
                 repaint();
