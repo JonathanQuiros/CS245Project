@@ -75,13 +75,13 @@ public class CreditsScreen extends javax.swing.JFrame {
         highScore3.setText("David Emmanuel");
 
         highScore4.setForeground(new java.awt.Color(255, 255, 255));
-        highScore4.setText("Eric Ransel");
+        highScore4.setText("Eric Rensel");
 
         highScoreValue3.setForeground(new java.awt.Color(255, 255, 255));
-        highScoreValue3.setText("000000");
+        highScoreValue3.setText("009879584");
 
         highScoreValue4.setForeground(new java.awt.Color(255, 255, 255));
-        highScoreValue4.setText("000000");
+        highScoreValue4.setText("010642073");
 
         javax.swing.GroupLayout jPanel2Layout = new javax.swing.GroupLayout(jPanel2);
         jPanel2.setLayout(jPanel2Layout);

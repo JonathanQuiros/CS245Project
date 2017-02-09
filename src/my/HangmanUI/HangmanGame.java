@@ -13,20 +13,14 @@
 ****************************************************************/ 
 package my.HangmanUI;
 
-import java.awt.Component;
 import java.awt.Graphics;
 import java.awt.Graphics2D;
-import java.awt.event.ActionEvent;
 import java.awt.geom.Line2D;
 import java.util.Calendar;
 import java.util.GregorianCalendar;
 import java.util.Random;
 import static java.lang.Thread.sleep;
-import javax.swing.AbstractAction;
-import javax.swing.Action;
 import javax.swing.JComponent;
-import javax.swing.JOptionPane;
-import javax.swing.KeyStroke;
 
 //This class houses the entire game and handles the creation of the interface
 public class HangmanGame extends javax.swing.JFrame {
@@ -44,14 +38,14 @@ public class HangmanGame extends javax.swing.JFrame {
     String word = words[gen.nextInt(5)].toString();
     static char letter = ' ';
     
-    int points = 100, anatomy = 0;
+    static int points = 100; 
+    int anatomy = 0;
     
     /**
      * Creates new form HangmanGame
      */
     public HangmanGame() {
         initComponents();
-        keyBinds(this);
     }
 
     /**
@@ -862,6 +856,8 @@ public class HangmanGame extends javax.swing.JFrame {
         }
         //</editor-fold>
         //</editor-fold>
+        //</editor-fold>
+        //</editor-fold>
 
         /* Create and display the form */
         java.awt.EventQueue.invokeLater(new Runnable() {
@@ -982,6 +978,7 @@ public class HangmanGame extends javax.swing.JFrame {
                 return false;
         }
         
+        points = 100;
         return true;
     }
     
@@ -994,32 +991,6 @@ public class HangmanGame extends javax.swing.JFrame {
         colorGame.setVisible(true);
         colorGame.addMouseListener(colorGame);
         this.setVisible(false);
-    }
-    
-    private void keyBinds(HangmanGame hg) {
-        
-        hg.rootPane.getInputMap().put(KeyStroke.getKeyStroke("F1"), "credits");
-        Action credits = new AbstractAction(){
-
-            @Override
-            public void actionPerformed(ActionEvent arg0) {
-                Component frame = null;
-                JOptionPane.showMessageDialog(frame, "Jonathan Quiros, 010233288\nMarco Roman, 009743318\nDavid Emmanuel, 000000000\nEric Rensel, 000000000",
-                        "Credits", 
-                        JOptionPane.PLAIN_MESSAGE);
-            }
-        };
-        hg.rootPane.getActionMap().put("credits", credits);
-        
-        hg.rootPane.getInputMap().put(KeyStroke.getKeyStroke("ESCAPE"), "quit");
-        Action quit = new AbstractAction(){
-
-            @Override
-            public void actionPerformed(ActionEvent arg0) {
-                System.exit(0);
-            } 
-        };
-        hg.rootPane.getActionMap().put("quit", quit);
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables

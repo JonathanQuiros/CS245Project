@@ -14,20 +14,14 @@
 package my.HangmanUI;
 
 import java.awt.Color;
-import java.awt.Component;
 import java.awt.Graphics;
 import java.awt.Graphics2D;
-import java.awt.event.ActionEvent;
 import java.util.Calendar;
 import java.util.GregorianCalendar;
 import java.util.Random;
 import java.awt.event.MouseEvent;
 import java.awt.event.MouseListener;
 import java.awt.geom.Ellipse2D;
-import javax.swing.AbstractAction;
-import javax.swing.Action;
-import javax.swing.JOptionPane;
-import javax.swing.KeyStroke;
 
 //Creates an instance of the game
 public class ColorGame extends javax.swing.JFrame implements MouseListener{
@@ -51,12 +45,13 @@ public class ColorGame extends javax.swing.JFrame implements MouseListener{
     //been displayed
     int points = 0, gameTracker = 0;
     
+    static int score = HangmanGame.points + 100;
+    
     /**
      * Creates new form ColorGame
      */
     public ColorGame() {
         initComponents();
-        keyBinds(this);
     }
 
     /**
@@ -208,6 +203,8 @@ public class ColorGame extends javax.swing.JFrame implements MouseListener{
         }
         //</editor-fold>
         //</editor-fold>
+        //</editor-fold>
+        //</editor-fold>
 
         /* Create and display the form */
         java.awt.EventQueue.invokeLater(new Runnable() {
@@ -341,6 +338,7 @@ public class ColorGame extends javax.swing.JFrame implements MouseListener{
             if (ellipses[i].contains(e.getX(), e.getY()) ){
                 if(labelColorIndicator.equals(colorIndicator[i])){
                     points += 100;
+                    score += 100;
                 }
             
                 if(gameTracker >= 5){
@@ -401,32 +399,6 @@ public class ColorGame extends javax.swing.JFrame implements MouseListener{
     @Override
     public void mousePressed(MouseEvent e){
         
-    }
-    
-    private void keyBinds(ColorGame cg) {
-        
-        cg.rootPane.getInputMap().put(KeyStroke.getKeyStroke("F1"), "credits");
-        Action credits = new AbstractAction(){
-
-            @Override
-            public void actionPerformed(ActionEvent arg0) {
-                Component frame = null;
-                JOptionPane.showMessageDialog(frame, "Jonathan Quiros, 010233288\nMarco Roman, 009743318\nDavid Emmanuel, 000000000\nEric Rensel, 000000000",
-                        "Credits", 
-                        JOptionPane.PLAIN_MESSAGE);
-            }
-        };
-        cg.rootPane.getActionMap().put("credits", credits);
-        
-        cg.rootPane.getInputMap().put(KeyStroke.getKeyStroke("ESCAPE"), "quit");
-        Action quit = new AbstractAction(){
-
-            @Override
-            public void actionPerformed(ActionEvent arg0) {
-                System.exit(0);
-            } 
-        };
-        cg.rootPane.getActionMap().put("quit", quit);
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables

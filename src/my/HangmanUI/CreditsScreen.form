@@ -204,7 +204,7 @@
                 <Property name="foreground" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
                   <Color blue="ff" green="ff" red="ff" type="rgb"/>
                 </Property>
-                <Property name="text" type="java.lang.String" value="Eric Ransel"/>
+                <Property name="text" type="java.lang.String" value="Eric Rensel"/>
               </Properties>
             </Component>
             <Component class="javax.swing.JLabel" name="highScoreValue3">
@@ -212,7 +212,7 @@
                 <Property name="foreground" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
                   <Color blue="ff" green="ff" red="ff" type="rgb"/>
                 </Property>
-                <Property name="text" type="java.lang.String" value="000000"/>
+                <Property name="text" type="java.lang.String" value="009879584"/>
               </Properties>
             </Component>
             <Component class="javax.swing.JLabel" name="highScoreValue4">
@@ -220,7 +220,7 @@
                 <Property name="foreground" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
                   <Color blue="ff" green="ff" red="ff" type="rgb"/>
                 </Property>
-                <Property name="text" type="java.lang.String" value="000000"/>
+                <Property name="text" type="java.lang.String" value="010642073"/>
               </Properties>
             </Component>
           </SubComponents>

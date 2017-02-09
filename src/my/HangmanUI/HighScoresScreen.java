@@ -5,25 +5,47 @@
  */
 package my.HangmanUI;
 
-import java.awt.Component;
-import java.awt.event.ActionEvent;
-import javax.swing.AbstractAction;
-import javax.swing.Action;
-import javax.swing.JOptionPane;
-import javax.swing.KeyStroke;
+import java.nio.file.Files;
+import java.nio.file.Paths;
+import java.util.ArrayList;
+import java.util.List;
 
 /**
  *
  * @author Bad and Boujee
  */
 public class HighScoresScreen extends javax.swing.JFrame {
+    private List<String> userInfo = new ArrayList<>();
 
     /**
      * Creates new form HighScoresScreen
      */
     public HighScoresScreen() {
         initComponents();
-        keyBinds();
+        try {
+            for (String line: Files.readAllLines(Paths.get("scores.txt"))) {
+                for (String part: line.split("\\s+")) {
+                    String str = part;
+                    userInfo.add(str);
+                }
+            }
+        } catch (Exception e) {
+            System.out.println("Error: " + e);
+        }
+        for (String lines: userInfo) {
+            if(userInfo.get(0) != null)
+                highScore1.setText(userInfo.get(0));
+            if(userInfo.get(1) != null)
+                highScoreValue1.setText(userInfo.get(1));
+            if(userInfo.get(2) != null)
+                highScore2.setText(userInfo.get(2));
+            if(userInfo.get(3) != null)
+                highScoreValue2.setText(userInfo.get(3));
+//            if(userInfo.get(4) != null)
+//                highScore3.setText(userInfo.get(4));
+//            if(userInfo.get(5) != null)
+//                highScoreValue3.setText(userInfo.get(5));
+        }
     }
 
     /**
@@ -45,14 +67,8 @@ public class HighScoresScreen extends javax.swing.JFrame {
         separator2 = new javax.swing.JLabel();
         highScoreValue2 = new javax.swing.JLabel();
         highScore3 = new javax.swing.JLabel();
-        highScore4 = new javax.swing.JLabel();
-        highScore5 = new javax.swing.JLabel();
         separator3 = new javax.swing.JLabel();
-        separator4 = new javax.swing.JLabel();
-        separator5 = new javax.swing.JLabel();
         highScoreValue3 = new javax.swing.JLabel();
-        highScoreValue4 = new javax.swing.JLabel();
-        highScoreValue5 = new javax.swing.JLabel();
         back = new javax.swing.JButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
@@ -88,29 +104,11 @@ public class HighScoresScreen extends javax.swing.JFrame {
         highScore3.setForeground(new java.awt.Color(255, 255, 255));
         highScore3.setText("ABC");
 
-        highScore4.setForeground(new java.awt.Color(255, 255, 255));
-        highScore4.setText("ABC");
-
-        highScore5.setForeground(new java.awt.Color(255, 255, 255));
-        highScore5.setText("ABC");
-
         separator3.setForeground(new java.awt.Color(255, 255, 255));
         separator3.setText("...........");
 
-        separator4.setForeground(new java.awt.Color(255, 255, 255));
-        separator4.setText("...........");
-
-        separator5.setForeground(new java.awt.Color(255, 255, 255));
-        separator5.setText("...........");
-
         highScoreValue3.setForeground(new java.awt.Color(255, 255, 255));
         highScoreValue3.setText("000000");
-
-        highScoreValue4.setForeground(new java.awt.Color(255, 255, 255));
-        highScoreValue4.setText("000000");
-
-        highScoreValue5.setForeground(new java.awt.Color(255, 255, 255));
-        highScoreValue5.setText("000000");
 
         javax.swing.GroupLayout jPanel2Layout = new javax.swing.GroupLayout(jPanel2);
         jPanel2.setLayout(jPanel2Layout);
@@ -132,23 +130,11 @@ public class HighScoresScreen extends javax.swing.JFrame {
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                         .addComponent(highScoreValue2))
                     .addGroup(jPanel2Layout.createSequentialGroup()
-                        .addComponent(highScore5)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(separator5, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(highScoreValue5))
-                    .addGroup(jPanel2Layout.createSequentialGroup()
                         .addComponent(highScore3)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                         .addComponent(separator3, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(highScoreValue3))
-                    .addGroup(jPanel2Layout.createSequentialGroup()
-                        .addComponent(highScore4)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(separator4, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(highScoreValue4)))
+                        .addComponent(highScoreValue3)))
                 .addContainerGap())
         );
         jPanel2Layout.setVerticalGroup(
@@ -169,17 +155,7 @@ public class HighScoresScreen extends javax.swing.JFrame {
                     .addComponent(highScore3)
                     .addComponent(separator3)
                     .addComponent(highScoreValue3))
-                .addGap(18, 18, 18)
-                .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(highScore4)
-                    .addComponent(separator4)
-                    .addComponent(highScoreValue4))
-                .addGap(18, 18, 18)
-                .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(highScore5)
-                    .addComponent(separator5)
-                    .addComponent(highScoreValue5))
-                .addContainerGap(76, Short.MAX_VALUE))
+                .addContainerGap(153, Short.MAX_VALUE))
         );
 
         back.setBackground(new java.awt.Color(0, 0, 0));
@@ -197,7 +173,7 @@ public class HighScoresScreen extends javax.swing.JFrame {
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel1Layout.createSequentialGroup()
                 .addContainerGap()
                 .addComponent(back)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 166, Short.MAX_VALUE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 159, Short.MAX_VALUE)
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
                     .addComponent(jPanel2, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                     .addComponent(highScores, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
@@ -264,6 +240,7 @@ public class HighScoresScreen extends javax.swing.JFrame {
             java.util.logging.Logger.getLogger(HighScoresScreen.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         }
         //</editor-fold>
+        //</editor-fold>
 
         /* Create and display the form */
         java.awt.EventQueue.invokeLater(new Runnable() {
@@ -272,52 +249,20 @@ public class HighScoresScreen extends javax.swing.JFrame {
             }
         });
     }
-    
-    private void keyBinds() {
-        
-        jPanel1.getInputMap().put(KeyStroke.getKeyStroke("F1"), "credits");
-        Action credits = new AbstractAction(){
-
-            @Override
-            public void actionPerformed(ActionEvent arg0) {
-                Component frame = null;
-                JOptionPane.showMessageDialog(frame, "Jonathan Quiros, 010233288\nMarco Roman, 009743318\nDavid Emmanuel, 000000000\nEric Rensel, 000000000",
-                        "Credits", 
-                        JOptionPane.PLAIN_MESSAGE);
-            }
-        };
-        jPanel1.getActionMap().put("credits", credits);
-        
-        jPanel1.getInputMap().put(KeyStroke.getKeyStroke("ESCAPE"), "quit");
-        Action quit = new AbstractAction(){
-
-            @Override
-            public void actionPerformed(ActionEvent arg0) {
-                System.exit(0);
-            } 
-        };
-        jPanel1.getActionMap().put("quit", quit);
-    }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton back;
     private javax.swing.JLabel highScore1;
     private javax.swing.JLabel highScore2;
     private javax.swing.JLabel highScore3;
-    private javax.swing.JLabel highScore4;
-    private javax.swing.JLabel highScore5;
     private javax.swing.JLabel highScoreValue1;
     private javax.swing.JLabel highScoreValue2;
     private javax.swing.JLabel highScoreValue3;
-    private javax.swing.JLabel highScoreValue4;
-    private javax.swing.JLabel highScoreValue5;
     private javax.swing.JLabel highScores;
     private javax.swing.JPanel jPanel1;
     private javax.swing.JPanel jPanel2;
     private javax.swing.JLabel separator1;
     private javax.swing.JLabel separator2;
     private javax.swing.JLabel separator3;
-    private javax.swing.JLabel separator4;
-    private javax.swing.JLabel separator5;
     // End of variables declaration//GEN-END:variables
 }

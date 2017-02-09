@@ -6,16 +6,10 @@
 package my.HangmanUI;
 
 import java.awt.Color;
-import java.awt.Component;
 import java.awt.Graphics;
-import java.awt.event.ActionEvent;
 import java.util.Calendar;
 import java.util.GregorianCalendar;
-import javax.swing.AbstractAction;
-import javax.swing.Action;
 import javax.swing.JFormattedTextField;
-import javax.swing.JOptionPane;
-import javax.swing.KeyStroke;
 
 /**
  *
@@ -46,12 +40,14 @@ public class SudokuGame extends javax.swing.JFrame {
     int points = 540;
     boolean errorDisplay = false;
     
+    static int score = ColorGame.score + 540;
+    
     /**
      * Creates new form SudokuGame
      */
     public SudokuGame() {
+        System.out.println(score);
         initComponents();
-        keyBinds(this);
     }
 
     /**
@@ -152,7 +148,6 @@ public class SudokuGame extends javax.swing.JFrame {
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         setMinimumSize(new java.awt.Dimension(600, 400));
-        setPreferredSize(new java.awt.Dimension(600, 400));
         setResizable(false);
 
         timeDisplay.setEditable(false);
@@ -198,7 +193,7 @@ public class SudokuGame extends javax.swing.JFrame {
         clock.start();
 
         skipButton.setFont(new java.awt.Font("Dialog", 1, 11)); // NOI18N
-        skipButton.setText("Skip");
+        skipButton.setText("Quit");
         skipButton.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 skipButtonActionPerformed(evt);
@@ -1276,10 +1271,8 @@ public class SudokuGame extends javax.swing.JFrame {
     }// </editor-fold>//GEN-END:initComponents
 
     private void skipButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_skipButtonActionPerformed
-        //MainScreen ms = new MainScreen();
-        //ms.setVisible(true);
-        HighScoresScreen hs = new HighScoresScreen();
-        hs.setVisible(true);
+        MainScreen ms = new MainScreen();
+        ms.setVisible(true);
         this.setVisible(false);
     }//GEN-LAST:event_skipButtonActionPerformed
 
@@ -1768,11 +1761,11 @@ public class SudokuGame extends javax.swing.JFrame {
             System.out.println("Incorrect solution.");
         }
         
-        if(complete()){
-            HighScoresScreen hs = new HighScoresScreen();
-            hs.setVisible(true);
+//        if(complete()){
+            EndScreen es = new EndScreen();
+            es.setVisible(true);
             this.setVisible(false);
-        }
+//        }
     }//GEN-LAST:event_submitButtonActionPerformed
     
     public boolean complete(){
@@ -1796,6 +1789,7 @@ public class SudokuGame extends javax.swing.JFrame {
                 if(key[i][j] != input[i][j]){
                     c = false;
                     points -= 10;
+                    score -= 10;
                 }
             }
         }
@@ -1830,6 +1824,8 @@ public class SudokuGame extends javax.swing.JFrame {
         }
         //</editor-fold>
         //</editor-fold>
+        //</editor-fold>
+        //</editor-fold>
 
         /* Create and display the form */
         java.awt.EventQueue.invokeLater(new Runnable() {
@@ -1862,32 +1858,6 @@ public class SudokuGame extends javax.swing.JFrame {
             g.drawLine(127, y, 469, y);
         }
 
-    }
-    
-    private void keyBinds(SudokuGame sg) {
-        
-        sg.rootPane.getInputMap().put(KeyStroke.getKeyStroke("F1"), "credits");
-        Action credits = new AbstractAction(){
-
-            @Override
-            public void actionPerformed(ActionEvent arg0) {
-                Component frame = null;
-                JOptionPane.showMessageDialog(frame, "Jonathan Quiros, 010233288\nMarco Roman, 009743318\nDavid Emmanuel, 000000000\nEric Rensel, 000000000",
-                        "Credits", 
-                        JOptionPane.PLAIN_MESSAGE);
-            }
-        };
-        sg.rootPane.getActionMap().put("credits", credits);
-        
-        sg.rootPane.getInputMap().put(KeyStroke.getKeyStroke("ESCAPE"), "quit");
-        Action quit = new AbstractAction(){
-
-            @Override
-            public void actionPerformed(ActionEvent arg0) {
-                System.exit(0);
-            } 
-        };
-        sg.rootPane.getActionMap().put("quit", quit);
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
